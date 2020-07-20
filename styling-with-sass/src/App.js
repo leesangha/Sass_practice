@@ -2,6 +2,7 @@ import React from "react";
 import Button from "./components/Button";
 import "./App.scss";
 function App() {
+  const asdf = 'asdf'
   return (
     <div className="App">
       <div className="buttons">
