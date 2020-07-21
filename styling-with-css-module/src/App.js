@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import Checkox from "./components/Checkbox";
+import React, { useState } from 'react';
+import Checkox from './components/Checkbox';
 
 function App() {
   const [check, setCheck] = useState(false);
