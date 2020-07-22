@@ -13,29 +13,39 @@ const colorStyles = css`
       &:active {
         background: ${darken(0.1, selected)};
       }
+      ${(props) =>
+        props.outline &&
+        css`
+          color: ${selected};
+          background: none;
+          border: 1px solid ${selected};
+          &:hover {
+            background: ${selected};
+            color: white;
+          }
+        `}
     `;
   }}
 `;
 const sizeStyles = css`
-${(props) =>
-  props.size === 'large' &&
-  css`
-    height: 3rem;
-    font-size: 1.25rem;
+  ${({ size }) => css`
+    height: ${sizes[size].height};
+    font-size: ${sizes[size].fontSize};
   `}
-    ${(props) =>
-      props.size === 'medium' &&
-      css`
-        height: 2rem;
-        font-size: 1rem;
-      `}
-    ${(props) =>
-      props.size === 'small' &&
-      css`
-        height: 1.75rem;
-        font-size: 0.8rem;
-      `}`;
+`;
 
+const fullWidthStyle = css`
+  ${(props) =>
+    props.fullWidth &&
+    css`
+      width: 100%;
+      justify-content: center;
+      & + & {
+        margin-left: 0;
+        margin-top: 1rem;
+      }
+    `}
+`;
 const StyledButton = styled.button`
   /*공통 스타일 */
   display: inline-flex;
@@ -49,13 +59,14 @@ const StyledButton = styled.button`
   padding-right: 1rem;
   align-items: center;
 
-  /*크기 */
-  ${sizeStyles}
-  ${colorStyles}
   /*기타 */
   & + & {
     margin-left: 1rem;
   }
+
+  ${sizeStyles}
+  ${colorStyles}
+  ${fullWidthStyle}
 `;
 
 const sizes = {
@@ -72,9 +83,9 @@ const sizes = {
     fontSize: '0.8rem',
   },
 };
-function Button({ children, color, size, ...rest }) {
+function Button({ children, color, outline, size, ...rest }) {
   return (
-    <StyledButton color={color} size={size} {...rest}>
+    <StyledButton color={color} size={size} outline={outline} {...rest}>
       {children}
     </StyledButton>
   );
