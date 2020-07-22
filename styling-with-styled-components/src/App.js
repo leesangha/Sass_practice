@@ -1,6 +1,7 @@
 import React from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import Button from './components/Button';
+import Dialog from './components/Dialog';
 const AppBlock = styled.div`
   width: 512px;
   margin: 0 auto;
@@ -24,7 +25,7 @@ function App() {
     <ThemeProvider theme={{ palette }}>
       <AppBlock>
         <ButtonGroup>
-          <Button color="gray" size="large">
+          <Button color="gray" size="large" outline>
             Button
           </Button>
           <Button color="gray">Button </Button>
@@ -33,23 +34,17 @@ function App() {
           </Button>
         </ButtonGroup>
         <ButtonGroup>
-          <Button color="blue" size="large">
-            Button
-          </Button>
-          <Button color="blue">Button </Button>
-          <Button color="blue" size="small">
+          <Button color="blue" size="large" fullWidth>
             Button
           </Button>
         </ButtonGroup>
-        <ButtonGroup>
-          <Button color="pink" size="large">
-            Button
-          </Button>
-          <Button color="pink">Button </Button>
-          <Button color="pink" size="small">
-            Button
-          </Button>
-        </ButtonGroup>
+        <Dialog
+          title="정말로 삭제하시겠습니까?"
+          confirmText="삭제"
+          cancelText="취소"
+        >
+          데이터를 정말로 삭제하시겠습니까?
+        </Dialog>
       </AppBlock>
     </ThemeProvider>
   );
