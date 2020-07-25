@@ -3,6 +3,7 @@ import Button from "./components/Button";
 import "./App.scss";
 function App() {
   const asdf = "asdf";
+  const a = "sdfsdf";
   return (
     <div className="App">
       <div className="buttons">
